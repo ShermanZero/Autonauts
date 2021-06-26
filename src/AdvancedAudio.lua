@@ -400,10 +400,10 @@ local audioString = [[{
     "UIOptionIndicated1stPass"
   ],
   "Whistles": [
-    "Whistle1",
-    "Whistle2",
-    "Whistle3",
-    "Whistle4",
+    "WhistleBlown1",
+    "WhistleBlown2",
+    "WhistleBlown3",
+    "WhistleBlown4",
     "WhistleCancel1",
     "WhistleCancel2",
     "WhistleCancel3",
@@ -609,16 +609,16 @@ end
 ---@param tableName string The name of the table
 ---@param tableContents table The contents of the table
 local function exposeAudioEvents(tableName, tableContents)
-  local selectedEvent = tableContents[0] or "n/a"
+  local selectedEvent = tableContents[1] or "n/a"
 
   ---Callback function to change the selected event in code to correspond
   ---to what the user selected.
   ---@param index number The index of the currently selected audio event
   local function selected(index)
-    if index ~= nil then
-      --Not sure why index doesn't follow convention, but nevertheless if not set to `index+1` the code will fail
+    if index ~= nil and index >= 0 then
+      --Not sure why tables don't follow convention, but nevertheless if not set to `index+1` the code will fail
       selectedEvent = tableContents[index+1]
-      log("Selected event set to "..selectedEvent, LL_FULL)
+      log("Selected event set to "..(selectedEvent or "unkown"), LL_FULL)
     end
   end
 
@@ -746,7 +746,7 @@ end
 ---Sets up the mod with Steam.
 function SteamDetails()
   -- Set steam details
-  ModBase.SetSteamWorkshopDetails("AdvancedAudio", "Ever wanted more than just SFX and Music audio options?  This does it all.", {"audio"}, "logo.png")
+  ModBase.SetSteamWorkshopDetails("AdvancedAudio", "Ever wanted more than just SFX and Music audio options?  This does it all by exposing every audio event in the game and allowing you to change each of their volumes independently!", {"audio"}, "logo.png")
 end
 
 ---Exposes variables to the game UI.
