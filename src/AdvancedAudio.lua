@@ -3,7 +3,7 @@
 
   author: Kieran Skvortsov (ShermanZero)
   website: https://shermanzero.com (currently under development)
-  source: https://github.com/shermanzero/Autonauts/AdvancedAudio
+  source: https://github.com/shermanzero/Autonauts
   copyright: GNU General Public License v3.0
   description: This mod allows the user full customization over all
     audio events (sounds) in the game.
@@ -84,29 +84,7 @@ local logLevel = 0
   storing the large string staticly in code is the best option.
 ]]
 local audioString = [[{
-  "Achievements": [
-    "BadgeEarned1stPass",
-    "BlueprintUnlocked1stPass",
-    "BlueprintUnlockedEnd1stPass",
-    "CeremonyFirstBot",
-    "CeremonyFolkLevelUp1stPass",
-    "CertificateAppear",
-    "EraEnd1stPass",
-    "EvolutionBandAppear",
-    "EvolutionBandUnlocked1stPass",
-    "EvolutionInfoAppear1stPass",
-    "Go1stPass",
-    "QuestEnd1stPass",
-    "MainQuestEnd1stPass",
-    "MissionComplete",
-    "Plus11stPass",
-    "Plus1Complete1stPass"
-  ],
-  "Actions": [
-    "Ruffle",
-    "Scanning"
-  ],
-  "Animals": [
+"Animals": [
     "BeeIdle",
     "BirdEating",
     "BirdScared",
@@ -127,6 +105,9 @@ local audioString = [[{
     "SheepScared",
     "SheepShearing"
   ],
+  "Badges": [
+    "BadgeEarned1stPass"
+  ],
   "Bats": [
     "BatBallBatHit",
     "BatBallBlockHit",
@@ -141,7 +122,9 @@ local audioString = [[{
     "BlueprintJump",
     "BlueprintMaking",
     "BlueprintMakingComplete1stPass",
-    "BlueprintSwoosh"
+    "BlueprintSwoosh",
+    "BlueprintUnlocked1stPass",
+    "BlueprintUnlockedEnd1stPass"
   ],
   "Bots": [
     "BotGrouped",
@@ -156,18 +139,26 @@ local audioString = [[{
     "BuildingMaking",
     "BuildingMakingComplete1stPass",
     "BuildingMakingComplete21stPass",
-    "BuildingStageComplete1stPass"
+    "BuildingStageComplete1stPass",
+    "TranscendBuildingConvert"
   ],
-  "Cart": [
+  "Carts": [
     "CartMotion"
   ],
-  "Catapult": [
+  "Catapults": [
     "CatapultRelease",
     "CatapultReset",
     "CatapultRewinding",
     "CatapultTargetSelected"
   ],
-  "Crane": [
+  "Ceremonies": [
+    "CeremonyFirstBot",
+    "CeremonyFolkLevelUp1stPass"
+  ],
+  "Certificates": [
+    "CertificateAppear"
+  ],
+  "Cranes": [
     "CraneDrop",
     "CraneMotion",
     "CranePickup"
@@ -185,6 +176,14 @@ local audioString = [[{
     "Thunder04",
     "Waves"
   ],
+  "Eras": [
+    "EraEnd1stPass"
+  ],
+  "Evolution": [
+    "EvolutionBandAppear",
+    "EvolutionBandUnlocked1stPass",
+    "EvolutionInfoAppear1stPass"
+  ],
   "Farming": [
     "CropGrowing",
     "FarmerDisengagedObject",
@@ -197,8 +196,7 @@ local audioString = [[{
     "FarmerThrow",
     "FertiliserUsed1stPass",
     "PloughMotion",
-    "PloughMotionSoil",
-    "Seeding"
+    "PloughMotionSoil"
   ],
   "Fireworks": [
     "FireworkExplode",
@@ -248,7 +246,34 @@ local audioString = [[{
     "InstrumentMaraca",
     "InstrumentTriangle"
   ],
-  "Making": [
+  "Minecarts": [
+    "MinecartConnect",
+    "MinecartDisconnect",
+    "MinecartHitBuffer",
+    "MinecartMotion"
+  ],
+  "Misc": [
+    "Confetti",
+    "FanfareGoodSmall1stPass",
+    "FireBurning",
+    "FurnaceIdle",
+    "Go1stPass",
+    "MusicDenkiThemeFanfare",
+    "ObjectCreated",
+    "Plus11stPass",
+    "Plus1Complete1stPass",
+    "Rocket",
+    "Ruffle",
+    "Scanning",
+    "ScooterMove",
+    "StoneHengeActive",
+    "Tick1stPass",
+    "TreeFallen",
+    "TutorTalk",
+    "ZigguratDone",
+    "ZigguratTransform"
+  ],
+  "Misc Making": [
     "BasicMetalWorkbenchMaking",
     "BenchSaw2Making",
     "BenchSawMaking",
@@ -265,27 +290,8 @@ local audioString = [[{
     "StringWinderMaking",
     "TrackMaking"
   ],
-  "Minecarts": [
-    "MinecartConnect",
-    "MinecartDisconnect",
-    "MinecartHitBuffer",
-    "MinecartMotion"
-  ],
-  "Misc": [
-    "MusicDenkiThemeFanfare",
-    "FanfareGoodSmall1stPass",
-    "Tick1stPass",
-    "TutorTalk",
-    "TranscendBuildingConvert",
-    "FurnaceIdle"
-  ],
-  "Objects": [
-    "Confetti",
-    "FireBurning",
-    "ObjectCreated",
-    "Rocket",
-    "ScooterMove",
-    "TreeFallen"
+  "Missions": [
+    "MissionComplete"
   ],
   "Player": [
     "PlayerActionFail1stPass",
@@ -301,6 +307,10 @@ local audioString = [[{
     "PlayerStoneMove",
     "PlayerUpgradeAdded"
   ],
+  "Quests": [
+    "MainQuestEnd1stPass",
+    "QuestEnd1stPass"
+  ],
   "Research": [
     "ResearchDissection",
     "ResearchFirst1stPass",
@@ -315,10 +325,6 @@ local audioString = [[{
     "ResearchUnlocked1stPass"
   ],
   "Scripts": [
-    "ScriptPaused",
-    "ScriptUndo",
-    "ScriptUpdated",
-    "ScriptingGoSelected",
     "ScriptClear",
     "ScriptInstructionAdded",
     "ScriptInstructionAreaIndicated",
@@ -327,23 +333,22 @@ local audioString = [[{
     "ScriptInstructionExecuted1",
     "ScriptInstructionExecuted2",
     "ScriptInstructionExecuted3",
+    "ScriptInstructionForeverAdded",
+    "ScriptInstructionForeverRemoved",
     "ScriptInstructionIndicated",
     "ScriptInstructionRemoved",
-    "ScriptInstructionForeverAdded",
-    "ScriptInstructionForeverRemoved"
+    "ScriptPaused",
+    "ScriptUndo",
+    "ScriptUpdated",
+    "ScriptingGoSelected"
   ],
   "Ships": [
     "ShipClose",
     "ShipOpen"
   ],
-  "SteamEngine": [
+  "SteamEngines": [
     "StationarySteamEngineConverting",
     "StationarySteamEngineRunning"
-  ],
-  "Structures": [
-    "ZigguratDone",
-    "ZigguratTransform",
-    "StoneHengeActive"
   ],
   "Tickets": [
     "TicketsAdd",
@@ -368,7 +373,7 @@ local audioString = [[{
     "TrainRefuelling",
     "TrainStopped"
   ],
-  "Transmitter": [
+  "Transmitters": [
     "Transmitter",
     "TransmitterReward"
   ],
@@ -384,6 +389,7 @@ local audioString = [[{
     "OptionToggled",
     "Pause1stPass",
     "RolloverPopup",
+    "Seeding",
     "SpacePortJobCancelled",
     "SpacePortJobDeleted",
     "StartButton",
@@ -394,10 +400,10 @@ local audioString = [[{
     "UIOptionIndicated1stPass"
   ],
   "Whistles": [
-    "WhistleBlown1",
-    "WhistleBlown2",
-    "WhistleBlown3",
-    "WhistleBlown4",
+    "Whistle1",
+    "Whistle2",
+    "Whistle3",
+    "Whistle4",
     "WhistleCancel1",
     "WhistleCancel2",
     "WhistleCancel3",
@@ -423,10 +429,14 @@ local audioString = [[{
     "WorkerConfirm1",
     "WorkerConfirm2",
     "WorkerConfirm3",
+    "WorkerCrudeClayMove",
     "WorkerCrudeMove",
+    "WorkerCrudeStoneMove",
     "WorkerIndicated",
     "WorkerLowEnergy1stPass",
     "WorkerMove",
+    "WorkerMoveClay",
+    "WorkerMoveStone",
     "WorkerNoEnergy",
     "WorkerNoTool",
     "WorkerRestarted",
